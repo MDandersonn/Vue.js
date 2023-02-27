@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <!-- 양방향바인딩 --> 
+        <input type="text" v-model="word"><br>
+        {{word}}<br>
+
+
+        <!-- 메서드로 하는방법 -->
+        <input type="text" :value="word2" @keyup="func"><br>
+        {{word2}}<br>
+    </div>
+    
+    <script>
+        new Vue({//뷰 인스턴스생성
+            el: '#app',
+            data:{
+                word:'hello',
+                word2:'bye'
+                
+    
+            },
+            methods: {
+                func(event){
+                    console.log(event);
+                    this.word2=event.target.value
+                }
+       
+            }
+            
+        })
+    //   const { createApp } = Vue
+    
+    //   createApp({
+    //     data() {
+    //       return {
+    //         message: 'Hello Vue!'
+    //       }
+    //     }
+    //   }).mount('#app')
+    </script>
+    </body>
+    </html>

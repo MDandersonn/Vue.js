@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+   
+    <div id="app">
+<!-- 등록한 태그명을 갖다 쓴다. 지역컴포넌트 사용-->
+        <kossie-button-local></kossie-button-local>
+    </div>
+
+<hr><hr><hr>
+
+    <div id="app2">
+        <!-- 등록한 태그명을 갖다 쓴다. 전역 컴포넌트 사용 -->
+        <kossie-button></kossie-button>
+    </div>
+    
+    <script>
+        //컴포넌트(다른 컴포넌트에서 사용)
+        Vue.component('hello-world',{
+            template:'<div>helloWorld(전역)</div>'
+        })
+
+// 뷰인스턴스가 생성되기전에 뷰컴포넌트를 만들어줌
+// component(태그명,옵션)
+// 전역 인스턴스로 등록
+        Vue.component('kossie-button',{
+            //template에는 가장 바깥 루트태그가 꼭 있어야한다.(div같은.)
+            template: `
+                        <div>
+                        {{name}}<br>
+                        <hello-world></hello-world>
+                        <button @click="changeText">전역컴포넌트</button>
+                        </div>`,
+            // data:{
+            //     name:'kossie'
+            // },
+            // 재사용을하는 컴퍼넌트이기때문에 data를 넣으면은,
+            //오브젝트가 레퍼런스로넘어가기(주소가넘어감)떄문에 컴퍼넌트가 사용될때마다 data가 변경되면은
+            //그주소에있는 모든 data가 업데이트되서 한곳에서 컴퍼넌트를 사용할때 네임이변경되면 이컴퍼넌트를 사용하고있는
+            //다른곳에서도 업데이트 되기때문에 이를 함수로 바꿔줘야한다.
+            //컴퍼넌트를만들때는 함수로 만들어서 오브젝트를 리턴해준다고 외워라.
+            data() {
+                return{
+                    name:'kossie'
+                }
+
+            },
+            methods:{
+                changeText(){
+                    this.name='kossie updated';
+                }
+            }
+
+        })
+
+        const ByeWorld={
+            template:'<div>byeWorld(지역)</div>'
+        }
+
+        const KossieButton={
+            components:{
+                'bye-world':ByeWorld
+            },
+
+            template: `
+                        <div>
+                        {{name}}<br>
+                        <hello-world></hello-world>
+                        <bye-world></bye-world>
+                        <button @click="changeText">지역컴포넌트</button>
+                        </div>`,
+
+            data() {
+                return{
+                    name:'kossie'
+                }
+
+            },
+            methods:{
+                changeText(){
+                    this.name='kossie updated';
+                }
+            }
+        }
+        
+        
+
+        const app= new Vue({//뷰 인스턴스생성
+            el: '#app',
+            //첫번째 인스턴스에만 컴포넌트 등록함.
+            components:{
+                //태그이름 : 오브젝트
+                'kossie-button-local': KossieButton
+            }
+        })
+
+        const app2 = new Vue({//뷰 인스턴스생성
+            el: '#app2',
+        })
+    //   const { createApp } = Vue
+    
+    //   createApp({
+    //     data() {
+    //       return {
+    //         message: 'Hello Vue!'
+    //       }
+    //     }
+    //   }).mount('#app')
+    </script>
+    </body>
+    </html>

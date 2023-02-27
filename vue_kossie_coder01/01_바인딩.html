@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+   
+<div id="app">{{ person.name }}, {{ person.age}}<br>
+    {{nextYear('안녕하세용')}}<br>
+    <!-- 함수에 넣는것을 인자(argument)라 부른다. -->
+    {{nextYear2()}}<br>
+    <input type="text" v-bind:value='inputData'><br>
+    <!-- :value 로 생략이 가능하다. -->
+    <a :href="link">네이버</a>
+    <a :href="getLink('sports')">다음</a>
+    <br>
+
+</div>
+
+<script>
+    new Vue({//뷰 인스턴스생성
+        el: '#app',
+        data:{
+            person:{
+                name: '코지코더',
+                age: 34
+            },
+            inputData:'hello',
+            link:'https://www.naver.com/',
+            link2:'https://www.daum.net/'
+            
+
+        },
+        methods: {
+            getLink(channel){
+                return this.link2 +channel;
+            },
+            nextYear: function(greeting) {
+                return greeting+'! '+this.person.name + '는 내년에'+(this.person.age+1)  +'살입니다.'    
+                //vue에서 data안에있는 데이터들을 this안에 넣기떄문에 this.data.person.age을 할필요가없다.    
+            },
+            otherMethod: function() {
+                this.nextYear();
+            },
+            nextYear2(){
+                return "이렇게 function을 삭제해도 작동합니다."
+            }
+        }
+        
+    })
+//   const { createApp } = Vue
+
+//   createApp({
+//     data() {
+//       return {
+//         message: 'Hello Vue!'
+//       }
+//     }
+//   }).mount('#app')
+</script>
+
+    
+</body>
+</html>

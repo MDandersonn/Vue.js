@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+   
+    <div id="app">
+        {{year}}<br>
+        <button @click="alert">경고문</button>
+        <button @click="plus">더하기</button>
+        <button @click="minus">빼기</button>
+
+        <form @submit.prevent="submit">
+            <input type="text"><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    
+    <script>
+        new Vue({//뷰 인스턴스생성
+            el: '#app',
+            data:{
+                year:2018
+            },
+            methods: {
+                alert(){
+                    alert('hi hello')
+                },
+                plus(){
+                    this.year++;
+                },
+                minus(){
+                    this.year--;
+                },
+                submit(){
+                    alert('submitted');
+                    console.log("hello")//원래는 reload되서 바로지워지는데 .prevent로 인하여 reload를 방지함
+
+                }
+            }
+        })
+    //   const { createApp } = Vue
+    
+    //   createApp({
+    //     data() {
+    //       return {
+    //         message: 'Hello Vue!'
+    //       }
+    //     }
+    //   }).mount('#app')
+    </script>
+    </body>
+    </html>

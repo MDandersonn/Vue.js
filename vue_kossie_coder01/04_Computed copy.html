@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+   
+    <div id="app">
+        {{number+1 }}<br>
+        <!-- computed는 변수형태로 씀 -->
+        {{reversedMessage }}<br>
+
+        <!-- 함수로사용할때는 () 붙여줘야함 -->
+        {{reversedMessage2() }}
+
+    </div>
+    
+    <script>
+        new Vue({//뷰 인스턴스생성
+            el: '#app',
+            data:{
+                number:1,
+                message:'안녕하세요'
+                
+               
+                
+    
+            },
+            methods: {
+                reversedMessage2(){
+                    //함수호출할때마다, 계산을함.
+                    return this.message.split('').reverse().join('')
+                }
+       
+            },
+            // computed는 캐싱을함 인스턴스가생성될떄 computed속성이 생김
+            //{{ 변수명}}할때 이미 계산이 되어있음 (처음 한번만 계산하고 계속 사용가능.)
+            computed:{
+                reversedMessage(){
+                    return this.message.split('').reverse().join('')
+                }
+            }
+            
+        })
+    //   const { createApp } = Vue
+    
+    //   createApp({
+    //     data() {
+    //       return {
+    //         message: 'Hello Vue!'
+    //       }
+    //     }
+    //   }).mount('#app')
+    </script>
+    </body>
+    </html>

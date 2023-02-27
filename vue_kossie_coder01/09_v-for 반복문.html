@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+   
+    <div id="app">
+        이름: {{people[1].name}} , 나이: {{people[1].age}}
+<hr>
+
+<!-- in 대신  p of people 도 가능. -->
+<!-- key는 필수  index로 사용하면 안좋음 ,배열의 추가생성에 따라 바뀌는값이기 떄문.  -->
+        <div v-for="(p,index) in people" :key="p.name">
+            이름: {{p.name}},  index: {{index}} ,  나이: {{p.id}}
+        </div>
+        
+    </div>
+    
+    <script>
+        new Vue({//뷰 인스턴스생성
+            el: '#app',
+            data:{
+                people:[
+                    {id:1, name:'a',age:20},
+                    {id:2, name:'b',age:30},
+                    {id:3, name:'c',age:40},
+                ]
+            },
+            methods: {
+      
+            }
+            
+        })
+    //   const { createApp } = Vue
+    
+    //   createApp({
+    //     data() {
+    //       return {
+    //         message: 'Hello Vue!'
+    //       }
+    //     }
+    //   }).mount('#app')
+    </script>
+    </body>
+    </html>
