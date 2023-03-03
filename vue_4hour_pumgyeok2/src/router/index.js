@@ -44,6 +44,10 @@ const routes = [
     component: () => import(
       /* webpackChunkName: "databinding", webpackPrefetch:true */ '@/views/01_databinding/02_DataBindingHtmlView.vue')
   },
+  // webpackChunkName이 같다면 순서와상관없이 아무path에 접근하면 같은이름인 webpackChunk는 다 작동해서 한번에 다 받아진다
+  //이름을 그룹핑해서 같이 받아질수있도록 잘 판단해야한다. 
+  //같이사용하는 부류들은 같이 그룹핑하는게 효율적일것.
+
   {//해당 path를 사용자가 입력하면 경로의 컴포넌트를 갖고와서 App.vue의 router-view부분에 넣는다.
     path: '/databinding/input',
     name: 'DataBindingInputView',

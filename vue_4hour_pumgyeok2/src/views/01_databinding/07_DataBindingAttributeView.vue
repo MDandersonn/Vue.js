@@ -1,15 +1,30 @@
 <template>
 <div>
-   <input type="text"  v-bind:value="userId" readonly />
+   읽기전용:<input type="text"  v-bind:value="userId" readonly />
    <!-- 읽기전용이면 v-model로 양방향바인딩할필요없음
     value속성에 단방향데이터바인딩가능(양방향쓰면 위험함)
     v-bind키워드는 생략이 가능하다. 아래랑 똑같은 의미 
     -->
     <input type="text"  :value="userId" readonly />
+    <br>
+    단방향바인딩: <input type="text"  :value="userId" />{{userId}}
     <img :src="imgSrc" alt="" style="width:100px; height:auto;">
     <br>
-    <input type="search" v-model="txt1" />
-    <button :disabled="txt1 ===''">조회</button>
+    양방향바인딩:<input type="search" v-model="txt1" />{{txt1}}<br>
+    값이없으면 비활성화:<button :disabled="txt1 ===''">조회</button> <br>
+    <button>버튼1</button>
+    <button disabled>버튼2</button>
+    <button disabled="true">버튼3</button>
+    <button disabled="false">버튼4</button>
+    <button disabled=false>버튼5</button>
+    <button disabled=true>버튼6</button>
+
+    <button :disabled=true>버튼7</button>
+    <button :disabled="false">버튼8</button>
+    <button :disabled=false>버튼9</button>
+    <button :disabled="true">버튼10</button>
+<!-- v-bind를 해줘야 disabled스위치가 작동하는구나. -->
+
     <!-- 값이없으면 비활성화시키기 
     txt1값이 비어있으면 true값이 들어감-->
 </div>

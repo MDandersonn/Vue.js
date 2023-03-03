@@ -3,7 +3,7 @@
     <div>
         <select name="" id="">
             <!-- 기본값은 빈칸으로. -->
-            <option value=""></option>
+            <option value="">==선택==</option>
             <!-- for문 이용 배열수만큼 자동적으로 반복문이 돈다-->
             <option value="city.code" :key="city.code" v-for="city in cities">
                 {{city.title}}

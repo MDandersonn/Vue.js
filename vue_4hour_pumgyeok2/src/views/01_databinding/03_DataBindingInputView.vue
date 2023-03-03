@@ -3,9 +3,11 @@
 <div>
     <div>
         <input type="text" v-model="userId"/>
+        {{userId}}
         <!-- v-model : value값으로 바인딩되어 값이들어감.양방향바인딩이라는 특성이 있음.
         양방향으로 데이터바인딩되는데.즉  사용자가 input밸류를 브라우저에서 수정하면 그 값이 data() 함수의 return값이 변경된다. -->
-        <button @click="myFunction">클릭</button>
+        <button @click="myFunction">출력</button>
+        <!-- myFunction();인데 전달할 매개변수없으면 저렇게 생략해서써도된다. -->
         <button @click="changeData">변경</button>
         <br>
         <!-- input값은 문자열로 들어간다 숫자가 아님. -->

@@ -7,6 +7,7 @@
     -->
 
     <div :class="class2">클래스 바인딩2</div>
+     <div :class="{'text-red': true, active:true}">클래스 바인딩3</div>
 </div>
 </template>
 

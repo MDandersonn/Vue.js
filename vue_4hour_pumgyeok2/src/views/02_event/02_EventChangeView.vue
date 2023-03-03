@@ -3,11 +3,19 @@
     <!-- 멀티 셀렉트 -->
     <!-- @change 는 v-on:change와 같다. 
     이벤트 전달 :changeCity($event)  이렇게쓰면, 
-    return에서 changeCity(event){
+   메서드에서 changeCity(event){
         console.log(event.target) 이렇게 받을수있따.
     }
     -->
-  <select name="" id="" @change ="changeCity" v-model="selectedCity">
+    <select name="" id="" @change="changeCity1($event)" v-model="selectedCity">
+        <option value="">==도시선택==</option>
+        <option :value="city.cityCode" :key="city.cityCode" v-for="city in cityList">{{city.title}}</option>
+   </select>
+   {{selectedCity}}
+   <hr>
+
+
+  <select name="" id="" @change="changeCity" v-model="selectedCity">
         <option value="">==도시선택==</option>
         <option :value="city.cityCode" :key="city.cityCode" v-for="city in cityList">{{city.title}}</option>
    </select>
@@ -50,7 +58,8 @@ export default {
                 {cityCode:'064', dongCode:'4', dongTitle:"제주 4동"}
                 
             ],
-            selectedDongList:[]
+            selectedDongList:[],
+            
 
         }
     },
@@ -58,7 +67,10 @@ export default {
         changeCity (){
             this.selectedDongList=this.dongList.filter(dong => dong.cityCode===this.selectedCity)
 
-        }
+        },
+        changeCity1(event){
+            console.log(event.target)
+            }
         
 
     }

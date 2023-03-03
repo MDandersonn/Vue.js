@@ -1,6 +1,5 @@
 <template>
 <div>
-    <!-- 체크박스는 value값과 양방향바인딩이아니라. checked의 true/false 여부. checked속성과 양방향데이터바인딩되는것 -->
     <div>
         <!-- name이 아니라 v-model을 같은걸로 묶음 -->
         <input type="radio" name="" id="html" value="HTML" v-model="favoriteLang">
