@@ -12,7 +12,6 @@
           <p>자식에게 데이터전달하는 법 {{ pp }}<p>
         <div>
           <h1 style="color:red;">여기에 코드를 입력하면 컴포넌트의 slot(one)태그안으로 들어간다.</h1>
-          
         </div>
       </template>
       <template v-slot:two="props">

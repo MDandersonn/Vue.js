@@ -6,7 +6,14 @@
       <router-link to="/todo">Todo-app</router-link>|
       <router-link to="/todo2">Todo-app2</router-link>|
       <router-link to="/todo3">Todo-app3</router-link>|
-      <router-link to="/api">ApiView</router-link>|
+      <router-link to="/api">ApiView</router-link>|<br>
+      <router-link to="/singlefilecomponent">SingleFileComponentView</router-link>|
+      <router-link to="/props">PropsView</router-link>|
+      <router-link to="/emit">EmitView</router-link>|
+      <router-link to="/slot">SlotView</router-link>|
+      <router-link to="/slot1">SlotView1</router-link>|
+      <router-link to="/slot2">SlotView2</router-link>|<br>
+      <router-link to="/todo01">TodoView1</router-link>|
     </nav>
     <router-view/>
     <!-- 뷰라우터를 사용하고싶으면 라우터-뷰 태그 추가  -->
