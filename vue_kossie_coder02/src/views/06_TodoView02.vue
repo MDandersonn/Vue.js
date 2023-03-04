@@ -1,24 +1,18 @@
 <template>
   <div class="todo container">
-    <h1 class="text-center">Todo App</h1>
+    <h1 class="text-center">손주 컴포넌트까지 자식의 자식에게 데이터 보내기</h1>
     <CompletedTodoComponent :todosq="todos"/>
-    <input type="text" class="w-100 p-2" placeholder="Type todo" 
-          v-model="todoText"
-          @keyup.enter="addTodo">
-    <TodoComponent01 v-for="todo1 in todos" :key="todo1.id" :prp="todo1" @toggle-checkbox="toggle"
-            @click-delete="deleteTodo"/>
-            <!-- :prp="todo1"으로 속성명을 이용하여 자식에게 todo1값 전달. -->
-    {{todos}}
-    <br>
-    <UserList01 />
-   
+    <AddTodo01 @add-todo="addTodo" />
+    <TodoList01 :prp0="todos" @toggle-checkbox="toggle" @click-delete="deleteTodo"/>
+    <!-- 속성명으로 자식에게 todos리스트 전달. -->
   </div>
 </template>
 
 <script>
-import TodoComponent01 from '@/components/05_TodoComponent01.vue';
 import CompletedTodoComponent from '@/components/05_CompletedTodoComponent.vue';
-import UserList01 from "@/components/05_UserList01.vue";
+import TodoList01 from '@/components/06_TodoList01.vue';
+import AddTodo01 from '@/components/06_AddTodo01.vue';
+
 export default {
   data(){
     return{
@@ -31,9 +25,9 @@ export default {
     }
   },
   components:{
-    TodoComponent01,
-    CompletedTodoComponent,
-    UserList01
+    TodoList01,
+    AddTodo01,
+    CompletedTodoComponent
     
   },
   methods:{

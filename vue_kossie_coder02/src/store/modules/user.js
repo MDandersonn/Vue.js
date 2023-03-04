@@ -12,7 +12,7 @@ export default{
     actions:{
         getUsers({commit}){
             axios.get('https://jsonplaceholder.typicode.com/users').then(res=>{
-              console.log(res);
+              console.log(res,"users를 받아오는데에, 모듈로접근");
               commit('SET_USERS',res.data);
             });
           },

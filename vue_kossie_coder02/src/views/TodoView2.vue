@@ -1,6 +1,6 @@
 <template>
   <div class="todo container">
-    <h1 class="text-center">여러 컴포넌트의 자식의 자식 연결</h1>
+    <h1 class="text-center">손주 컴포넌트까지 자식의 자식에게 데이터 보내기</h1>
     <CompletedTodo :todosq="todos" />
     <AddTodo @add-todo="addTodo" />
     <TodoList :todos1="todos" @toggle-checkbox="toggle" @click-delete="deleteTodo"/>

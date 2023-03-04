@@ -13,7 +13,11 @@
       <router-link to="/slot">SlotView</router-link>|
       <router-link to="/slot1">SlotView1</router-link>|
       <router-link to="/slot2">SlotView2</router-link>|<br>
-      <router-link to="/todo01">TodoView1</router-link>|
+      <router-link to="/todo01">TodoView1(기본)</router-link>|
+      <router-link to="/todo02">TodoView2(컴포넌트 손주까지)</router-link>|
+       <router-link to="/todo03">TodoView3(mutation사용)</router-link>|
+       <router-link to="/todo04">TodoView4(actions,getters,maphelper사용)</router-link>|
+       <router-link to="/todo05">TodoView5(모듈사용)</router-link>|
     </nav>
     <router-view/>
     <!-- 뷰라우터를 사용하고싶으면 라우터-뷰 태그 추가  -->

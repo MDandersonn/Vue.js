@@ -28,6 +28,14 @@ export default {
         id: this.prp.id,
         checked: e.target.checked
       })
+
+      //아래처럼 해도된다
+      
+      // const p= {
+      //   id: this.prp.id,
+      //   checked: e.target.checked
+      // };
+      // this.$emit('toggle-checkbox',p)
     },
     clickDelete(){
       this.$emit('click-delete',this.prp.id);

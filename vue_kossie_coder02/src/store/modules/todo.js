@@ -10,7 +10,7 @@ export default{
       mutations: {//데이터를 바꿔줌 (update) 
         
         ADD_TODO(state,e){
-          console.log(e,3)
+          console.log(e,"addtodo(mutation)")
           state.todos.push({
             id:Math.random(),
             text:e.target.value,
@@ -18,6 +18,7 @@ export default{
           })
         },
         TOGGLE_TODO(state,{id,checked}){
+          console.log("체크(mutation)")
           const index= state.todos.findIndex(todoo =>{
             return todoo.id===id;
           });
@@ -25,6 +26,7 @@ export default{
     
         },
         DELETE_TODO(state,todoId){
+          console.log("삭제(mutation)")
           const index= state.todos.findIndex(todoo =>{
             return todoo.id===todoId;
           });
@@ -39,7 +41,7 @@ export default{
         //이어나가게 됨
         addTodo1({commit},e) {
           
-          console.log(e,2);
+          console.log(e,"모듈내부 addTodo액션");
           commit('ADD_TODO',e);
           
           //여기서 비동기작업들어감.
@@ -59,11 +61,13 @@ export default{
         //데이터를 payload라고 한다. 
         TOGGLE_TODO1({commit},payload){
             setTimeout(function(){
+              console.log("모듈로접근하여 체크")
               commit("TOGGLE_TODO",payload);
             },2000);
         },
         DELETE_TODO1({commit},todoId){
           setTimeout(function(){
+            console.log("모듈로접근하여 삭제")
             commit("DELETE_TODO",todoId);
           },2000);
     

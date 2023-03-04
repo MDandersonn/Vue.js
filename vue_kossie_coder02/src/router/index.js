@@ -13,6 +13,10 @@ import SlotView1 from '../views/04_SlotView1.vue'
 import SlotView2 from '../views/04_SlotView2.vue'
 
 import TodoView01 from '../views/05_TodoView01.vue'
+import TodoView02 from '../views/06_TodoView02.vue'
+import TodoView03 from '../views/07_TodoView03.vue'
+import TodoView04 from '../views/08_TodoView04.vue'
+import TodoView05 from '../views/09_TodoView05.vue'
 
 Vue.use(VueRouter)//뷰가 뷰라우터를 사용한다는 의미
 
@@ -84,6 +88,26 @@ const routes = [
     path: '/todo01',
     name: 'todo01',
     component: TodoView01
+  },
+  {
+    path: '/todo02',
+    name: 'todo02',
+    component: TodoView02
+  },
+  {//state, mutation사용
+    path: '/todo03',
+    name: 'todo03',
+    component: TodoView03
+  },
+  {//actions사용
+    path: '/todo04',
+    name: 'todo04',
+    component: TodoView04
+  },
+  {//module사용
+    path: '/todo05',
+    name: 'todo05',
+    component: TodoView05
   },
 ]
 
