@@ -9,7 +9,8 @@ import GlobalComponent from "@/components/lecture/componentTest/GlobalComponent.
 Vue.config.productionTip = false
 
 // global-component 커스텀 태그 등록
-Vue.component(GlobalComponent.name, GlobalComponent)
+Vue.component(GlobalComponent.name, GlobalComponent)//name이 "GlobalComponent" 라서 아래와 같은 얘기임
+// Vue.component("GlobalComponent", GlobalComponent)
 
 new Vue({
   router,

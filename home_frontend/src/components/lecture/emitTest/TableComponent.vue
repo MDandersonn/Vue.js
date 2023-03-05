@@ -1,11 +1,11 @@
 <template>
     <table>
         <tr-component
-            v-for="(rowData, index) in tableData" :key="index"
-            :row-data="rowData"
-            :row-index="index"
-            :table-data="tableData"
-            :current-turn-shape="currentTurnShape"
+            v-for="(rowData, index) in tableData1" :key="index"
+            :row-data2="rowData"
+            :row-index2="index"
+            :table-data2="tableData1"
+            :current-turn-shape2="currentTurnShape1"
             @updateTurnShape="updateTurnShape"
             @updateWinner="updateWinner"
             @updateTableData="updateTableData"/>
@@ -27,8 +27,8 @@ export default {
         TrComponent
     },
     props: {
-        tableData: Array,
-        currentTurnShape: String,
+        tableData1: Array,
+        currentTurnShape1: String,
     },
     methods: {
         updateTurnShape (passingValue) {

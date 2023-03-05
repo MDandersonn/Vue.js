@@ -1,12 +1,12 @@
 <template>
     <tr>
         <td-component
-            v-for="(cellData, index) in rowData" :key="index"
-            :cell-data="cellData"
-            :cell-index="index"
-            :row-index="rowIndex"
-            :table-data="tableData"
-            :current-turn-shape="currentTurnShape"
+            v-for="(cellData, index) in rowData2" :key="index"
+            :cell-data3="cellData"
+            :cell-index3="index"
+            :row-index3="rowIndex2"
+            :table-data3="tableData2"
+            :current-turn-shape3="currentTurnShape2"
             @updateTurnShape="updateTurnShape"
             @updateWinner="updateWinner"
             @updateTableData="updateTableData"/>
@@ -28,10 +28,10 @@ export default {
         TdComponent
     },
     props: {
-        rowData: Array,
-        rowIndex: Number,
-        tableData: Array,
-        currentTurnShape: String,
+        rowData2: Array,
+        rowIndex2: Number,
+        tableData2: Array,
+        currentTurnShape2: String,
     },
     methods: {
         updateTurnShape (receivedTurnShape) {
