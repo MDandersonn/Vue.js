@@ -43,8 +43,16 @@ export default {
     },
     methods: {
         onSubmit () {
+            console.log(this)
             const { title, writer, content } = this
+            console.log({ title, writer, content })
             this.$emit('submit', { title, writer, content })
+            // this.$emit('submit', { 
+            //   title:this.title, 
+            //   writer:this.writer, 
+            //   content:this.content 
+            //   })
+              // 부모컴퍼넌트의 submit이벤트 실행
         }
     }
 }

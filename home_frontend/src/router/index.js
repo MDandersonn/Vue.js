@@ -52,7 +52,7 @@ const routes = [
   },
   {
     path: '/board-register',
-    name: 'JpaBoardRegisterPage',
+    name: 'JpaBoardRegisterPage1',
     component: JpaBoardRegisterPage
   },
 

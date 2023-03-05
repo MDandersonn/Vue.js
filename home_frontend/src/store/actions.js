@@ -6,8 +6,11 @@ import axios from 'axios'
 
 export default {
     requestCreateBoardToSpring ({}, payload) {
-
+        console.log("payload: ",payload)
         const { title, content, writer } = payload
+        console.log("title:",title)
+        console.log("content:",content)
+        console.log("writer:",writer)
         return axios.post('http://localhost:7777/board/register',
             { title, content, writer })
             .then(() => {
