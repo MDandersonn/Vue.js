@@ -15,7 +15,7 @@ export default {
   components: { JpaBoardList },
   name: "JpaBoardListPage",
   computed: {
-    ...mapState([
+    ...mapState([////boards(){return this.$store.state.boards;}
       'boards'
     ]),
   },
@@ -23,7 +23,7 @@ export default {
     this.requestBoardListToSpring()// 마운트될때 ...mapActions에서 정의한 함수 호출, ->액션을 일으킴
   },
   methods: {
-    ...mapActions([
+    ...mapActions([//requestBoardListToSpring(){return this.$store.dispatch('requestBoardListToSpring')}을 정의
       'requestBoardListToSpring'//액션을일으킬수있는 함수만들어줌
     ])
   }
