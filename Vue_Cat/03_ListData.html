@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js App</title>
+    <!-- <link href="main.css" rel="stylesheet"> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="name">
+        <button @click="addMonster">추가</button>
+        <ul>
+            <li v-for="(i,index) in list" :key="i.id">{{i.id}},{{i.name}},{{i.hp}}
+                <button @click ="modifyMonster(index)">요소수정</button>
+                <button @click ="removeMonster(index)">삭제</button>
+                <button @click ="attack(index)">속성수정</button>
+            </li>
+            
+        </ul>
+        <span v-for="item in 15">{{item}}</span><br>
+        <span v-for="item in [1,5,10,15]">{{item}}</span>
+    
+    </div>
+    
+    <script>
+        var app= new Vue({
+            el: '#app',//마운트할 요소
+            data: {//애플리케이션에서 사용할 데이터
+                list:[
+                    {id:1, name:'슬라임',hp:100},
+                    {id:2, name:'고블린',hp:200},
+                    {id:3, name:'드래곤',hp:300}
+                ],
+                name:''
+            },
+            methods:{
+                addMonster(){
+                    var max = this.list.reduce(function(acc,current){
+                        return acc> current.id? acc : current.id
+                    },0)
+                    //0 :최초 callback함수 실행 시 accumulator 인수에 제공되는 값, 
+                    this.list.push({id: max+1, name: this.name,  hp:400});
+                },
+                removeMonster(index){
+                    console.log(index)
+                    this.list.splice(index,1)//출력값이 해당 배열요소 리턴함.
+                  
+                },
+                modifyMonster(index){
+                    //배열의 요소변경을 감지하려면 이렇게 해야함.
+                    // 변경할데이터, 인덱스또는 키, 새로운값
+                    this.$set(this.list , index, {id:99,name:'대왕',hp:500})
+                },
+                attack(index){
+                    this.list[index].hp -=10;
+                }
+
+            },
+            computed:{
+                // 산출속성(함수로인해 산출되는 데이터)
+                computedMessage:function(){
+                    return this.message
+                }
+            },
+            created: function(){
+                // 라이프사이클훅
+            }
+            
+            
+        })
+        
+    </script>
+    <!-- <script src="main.js"></script> -->
+</body>
+</html>

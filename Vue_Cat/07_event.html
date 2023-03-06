@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js App</title>
+    <!-- <link href="main.css" rel="stylesheet"> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <style>
+        img{
+            opacity:1;
+            transition:opacity 1s;
+        }
+        img.hide{
+            opacity:0;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <img src="r1.PNG" v-on:load="show=true" v-bind:class="{hide:!show}">
+        <!-- <div v-on:scroll="handler">
+            콘텐츠
+        </div> -->
+        
+        <input type="text" v-bind:value="message" v-on:input="handleInput">
+        {{message}}
+
+        <div v-on:click.right="handler">click_right</div>
+        <div v-on:click.right.stop="handler">prevent_click_right</div>
+        <button v-on:click.left.stop="handler">클릭해보세요</button>
+        <a href="https://www.naver.com" v-on:click.prevent>네이버</a>
+    </div>
+    
+    <script>
+        var app= new Vue({
+            el: '#app',//마운트할 요소
+            data: {//애플리케이션에서 사용할 데이터
+                show:false,
+                message:"hello"
+            },
+            methods:{
+                handler(){
+                  console.log("hi");
+                },
+                handleInput(event){
+                    this.message=event.target.value
+                }
+
+            },
+            computed:{
+                // 산출속성(함수로인해 산출되는 데이터)
+                computedMessage:function(){
+                    return this.message
+                }
+            },
+            created: function(){
+                // 라이프사이클훅
+            }
+            
+            
+        })
+        
+    </script>
+    <!-- <script src="main.js"></script> -->
+</body>
+</html>

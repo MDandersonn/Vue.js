@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js App</title>
+    <!-- <link href="main.css" rel="stylesheet"> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 조건을 만족하지않는경우 요소는DOM레벨에서 제거됨
+        컴퍼넌트라면 인스턴스가 제거되며 렌더링될때 모든 상태 초기화 -->
+        <div v-if="ok"> v-if 조건으로 출력하기</div>
+
+        <!-- v-show는 style="display:none;"으로 보여주지만않는 상태.-->
+        <div v-show="ok"> v-show 조건으로 출력하기</div>
+    
+        <!-- template를 이용한 v-if(여러 요소에 같은조건부여) -->
+        <template v-if="ok2">
+            <header>타이틀</header>
+            <div>콘텐츠</div>
+        </template>
+    </div>
+    <!-- else이용 -->
+    <!-- <div v-if="type ==='A'">
+        type은 A
+    </div>
+    <div v-else-if="type ==='B'">
+        type은 B
+    </div>
+    <div v-else>
+        모든 조건을 만족하지 않는경우
+    </div> -->
+    
+    <script>
+        var app= new Vue({
+            el: '#app',//마운트할 요소
+            data: {//애플리케이션에서 사용할 데이터
+                ok:false,
+                ok2:true,
+                // type:'B'
+                
+            },
+            methods:{
+
+            },
+            computed:{
+                // 산출속성(함수로인해 산출되는 데이터)
+                computedMessage:function(){
+                    return this.message
+                }
+            },
+            created: function(){
+                // 라이프사이클훅
+            }
+            
+            
+        })
+        
+    </script>
+    <!-- <script src="main.js"></script> -->
+</body>
+</html>

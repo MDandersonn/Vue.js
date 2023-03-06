@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js App</title>
+    <!-- <link href="main.css" rel="stylesheet"> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{width}}의 절반값은 {{halfWidth}}입니다.
+        X:{{halfPoint.x}}
+        Y:{{halfPoint.y}}
+        <input v-model.number="width">
+        <input v-model.number="halfWidth">
+<br>
+        methodsData :{{methodsData()}}<br>
+        methodsData :{{methodsData()}}<br>
+        methodsData :{{methodsData()}}<br>
+
+        <br>
+        computedData :{{computedData}}<br>
+        computedData :{{computedData}}<br>
+        computedData :{{computedData}}<br>
+
+    </div>
+    
+    <script>
+        var app= new Vue({
+            el: '#app',//마운트할 요소
+            data: {//애플리케이션에서 사용할 데이터
+                width:800,
+                height:600
+            },
+            methods:{
+                methodsData: function(){
+                    return Math.random()
+                }
+
+
+            },
+            computed:{
+                // 산출속성(함수로인해 산출되는 데이터)
+                halfWidth:{
+                    //width와 halfWidth의 양방향동기화
+                    get:function() {return this.width/2 },
+
+                    set: function(val){this.width=val*2}
+                    //halfWidth를 2배한 수를 width에 할당.
+                    
+                },
+                halfHeight(){
+                    return this.height/2;
+                },
+                halfPoint(){
+                    return{
+                        x:this.halfWidth,
+                        y:this.halfHeight
+                    }
+                },
+                computedData: function(){
+                    //리액티브데이터가 변경되기 전까지 산출속성을 캐시함
+                    //케시의 트리거가되는것인 리액티브데이터.
+                    // computed에서의 Math.random은 리액티브데이터가아니다.
+                    
+                    return Math.random()
+                }
+            },
+            created: function(){
+                // 라이프사이클훅
+            }
+            
+            
+        })
+        
+    </script>
+    <!-- <script src="main.js"></script> -->
+</body>
+</html>

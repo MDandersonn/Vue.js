@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js App</title>
+    <!-- <link href="main.css" rel="stylesheet"> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{Math.round(3.14)}}
+        <!-- 텍스트바인딩 -->
+        <p>{{message}}</p><br>
+        <!-- 속성데이터에 바인딩 v-bind: -->
+        <input type="text" :value="list[1]">
+        <!-- 속성DOM에 바인딩 -->
+        <div v-bind:text-content.prop="message"></div>
+
+        <!-- 현재 데이터 전체 상태를 json형식으로출력 -->
+        <pre>{{$data}}</pre>
+        
+        <!-- 클래스 ,스타일 데이터바인딩 -->
+        <p v-bind:class="classObject">classObject</p>
+        <p v-bind:style="styleObject">styleObject</p>
+
+        <!-- 여러개의 속성 데이터 바인딩하기 -->
+        <img v-bind="item" v-bind:id="item.id+ '입니다'">
+
+        <!-- SVG데이터 바인딩하기. -->
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <circle cx="100" cy="75" v-bind:r="radius" fill="lightpink"></circle>
+        </svg>
+        <input type="range" min="0" max="100" v-model="radius">
+
+        
+
+
+        <!-- 반복렌더링 -->
+        <ol>
+            <li v-for="item in list">{{item}}</li>
+        </ol>
+    <!-- 이벤트 -->
+        <button @click="plus">더하기</button> {{count}}<br>
+        <button @click="handClick">클릭</button><br>
+<!-- 입력양식과 동기화하기 -->
+        <input type="text" v-model="msg">
+        {{msg}}<br>
+        <!-- 숫자로받기 -->
+        <input type="text" v-model.number="num1">+<input type="text" v-model.number="num2">
+        ={{num1+num2}}<br>
+<!-- 조건분기 -->
+        <p v-if="show">show가 true로 설정되어 있습니다.</p> <br>
+<!-- 트랜지션 -->
+        <button @click="show=!show">변경하기</button>
+        <transition>
+            <p v-if="show">트랜지션</p>
+        </transition>
+<!-- computed -->
+        {{computedMessage}}
+        
+        
+
+    </div>
+    
+    <script>
+        var app= new Vue({// 뷰인스턴스
+            el: '#app',
+            data: {//리엑티브 데이터
+                message:'hello vue.js',
+                list: ['사과','바나나','딸기'],
+                count:0,
+                msg : "hello",
+                num1:0,
+                num2:0,
+                show:true,
+                classObject:{
+                    child :true,
+                    'is-active' :true
+
+                },
+                styleObject:{
+                    color:'red',
+                    backgroundColor:'green'
+
+                },
+                item :{
+                    id:1,
+                    src: 'item1.jpg',
+                    alt:'상품1의 섬네일',
+                    width:200,
+                    height:200
+                },
+                radius:50
+                
+            },
+            methods:{
+                plus(){
+                    //this는  new Vue()로 생성된 인스턴스의 리턴값을나타냄
+                    this.count++;
+                },
+                handClick(event){
+                    alert(event.target)
+
+                }
+                
+            },
+            computed:{
+                // 산출속성(함수로인해 산출되는 데이터)
+                computedMessage:function(){
+                    return this.message+ "!!"
+                }
+            },
+            created: function(){
+                console.log('created')
+                // 라이프사이클훅. vue인스턴스가 생성되고 데이터감시등의 리액티브시스템과
+                //관련된 초기화가 끝났을때, created메서드가 자동호출됨
+                //created:인스턴스가생성되고 리액티브데이터가 초기화된 직후호출 DOM만들기전.
+                //mounted:인스턴스의 상태를 사용해서 DOM을 만든 직후
+            }
+        })
+        
+    </script>
+    <!-- <script src="main.js"></script> -->
+</body>
+</html>
