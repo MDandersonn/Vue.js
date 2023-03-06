@@ -1,5 +1,6 @@
 import {
-    REQUEST_BOARD_LIST_TO_SPRING
+    REQUEST_BOARD_LIST_TO_SPRING,
+    REQUEST_BOARD_TO_SPRING,
 } from './mutation-types'
 
 import axios from 'axios'
@@ -21,9 +22,16 @@ export default {
             })
     },
     requestBoardListToSpring ({ commit }) {
-        return axios.get('http://localhost:7777/board/list')
-            .then((res) => {
+        return axios.get('http://localhost:7777/board/list')//겟방식으로 여기로 요청들어감
+            .then((res) => {//받아온 데이터를 담아 mutation을 일으킨다.
                 commit(REQUEST_BOARD_LIST_TO_SPRING, res.data)
+            })
+    },
+    requestBoardToSpring ({ commit },boardId) {
+        return axios.get(`http://localhost:7777/board/${boardId}`)
+        //가변인자넣을때는 `  ${boardId}`  형태로 넣는다
+            .then((res) => {//반환값을 받아서  mutation에 전달한다.
+                commit(REQUEST_BOARD_TO_SPRING, res.data)
             })
     }
 }
