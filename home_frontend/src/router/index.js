@@ -13,6 +13,14 @@ import JpaBoardListPage from "@/views/lecture/board/JpaBoardListPage.vue"
 import JpaBoardRegisterPage from "@/views/lecture/board/JpaBoardRegisterPage.vue"
 import JpaBoardReadPage from "@/views/lecture/board/JpaBoardReadPage.vue"
 import JpaBoardModifyPage from "@/views/lecture/board/JpaBoardModifyPage.vue"
+
+import JpaProductListPage from "@/views/lecture/product/JpaProductListPage.vue"
+import JpaProductRegisterPage from "@/views/lecture/product/JpaProductRegisterPage.vue"
+import JpaProductReadPage from "@/views/lecture/product/JpaProductReadPage.vue"
+import JpaProductModifyPage from "@/views/lecture/product/JpaProductModifyPage.vue"
+
+
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -80,6 +88,38 @@ const routes = [
 // path에 :으로 가변인자처리가능
 //컴퍼넌트가 여러개인경우 components: {   default: JpaBoardReadPage  }, 이렇게함
 // props:{  default:true 해줘야 라우터에 속성을 사용하여 데이터전달가능.}
+
+
+{
+  path: '/product-list-page',
+  name: 'JpaProductListPage',
+  component: JpaProductListPage
+},
+{
+  path: '/product-register',
+  name: 'JpaProductRegisterPage',
+  component: JpaProductRegisterPage
+},
+{
+  path: '/product-read/:productId',
+  name: 'JpaProductReadPage',
+  components: {
+    default: JpaProductReadPage
+  },
+  props: {
+    default: true
+  }
+},
+{
+  path: '/product-modify/:productId',
+  name: 'JpaProductModifyPage',
+  components: {
+    default: JpaProductModifyPage
+  },
+  props: {
+    default: true
+  }
+}
   
   
 ]
