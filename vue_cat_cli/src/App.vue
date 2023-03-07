@@ -5,6 +5,7 @@
       <router-link to="/about">About</router-link>|
       <router-link to="/watcher">Watcher</router-link>|
       <router-link to="/filter">Filter</router-link>|
+      <router-link to="/component">Component</router-link>|
     </nav>
     <router-view/>
   </div>

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import WatcherView from '../views/WatcherView.vue'
 import FilterView from '../views/FilterView.vue'
+import ComponentView from '../views/ComponentView.vue'
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,11 @@ const routes = [
     path: '/filter',
     name: 'filter',
     component: FilterView
+  },
+  {
+    path: '/component',
+    name: 'component',
+    component: ComponentView
   },
 ]
 
