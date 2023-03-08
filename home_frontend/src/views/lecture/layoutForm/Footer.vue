@@ -13,7 +13,7 @@
         방구석 집도리
       </v-card-text>
       <v-divider></v-divider>
-      <v-card-text>
+      <v-card-text class="blue--text">
         {{ new Date().getFullYear() }} -
 
         <strong>EDDI</strong>

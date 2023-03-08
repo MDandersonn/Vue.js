@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row>
-      <v-col v-for="image in images" :key="image" cols="3">
+      <v-col v-for="(image, idx) in images" :key="idx" cols="3">
       <!-- 한개가 12칸중 3칸을 차지하라는말 -->
         <v-img :src="image" aspect-ratio="1" class="grey lighten-2">
           <!-- 로딩중 뜨게하는 것 시작부(template내부) -->
@@ -16,6 +16,12 @@
         </v-img>
       </v-col>
     </v-row>
+        <!-- 보편적으로 플젝을 하는 상황에서 제일 많이 경험하는 문제 파트임 -->
+
+        <!-- 이미지 하나 입력 -->
+    <v-img :src="require(`@/assets/uploadImgs/${imageName}`)" 
+            aspect-ratio="1" class="grey lighten-2"/>
+            
   </v-container>
 </template>
 
@@ -24,7 +30,8 @@ export default {
     name: "ImageGalleryPage",
     data () {
         return {
-            images: [
+            imageName: "link.jpg",
+            images: [//백엔드에서받는경우 mapState에 저장될것이다.
                 require('@/assets/uploadImgs/mario_game.jpg'),
                 require('@/assets/uploadImgs/mario.png'),
                 require('@/assets/uploadImgs/link.jpg'),
