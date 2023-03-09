@@ -1,4 +1,6 @@
 <template>
+<!-- 왜 몬스터가 제거가안되나 -->
+<!-- 어택공격의 구현 안되어있음 -->
   <v-container>
     <div>
       <button v-on:click="addManyMonsters">몬스터 군단 추가</button><br/><br/>
@@ -74,7 +76,7 @@ export default {
   methods: {
     addManyMonsters: function () {
       for (let i = 0; i < 100; i++) {
-        let max = this.list.reduce(function(a, b) {
+        let max = this.list.reduce(function(a, b) {//a:누적값 , b: 현재값
           return a > b.id ? a : b.id
         }, 0)
 
