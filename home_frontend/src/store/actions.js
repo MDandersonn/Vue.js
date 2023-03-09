@@ -26,6 +26,10 @@ export default {
     requestBoardListToSpring ({ commit }) {//게시판 전체 출력
         return axios.get('http://localhost:7777/board/list')//겟방식으로 여기로 요청들어감
             .then((res) => {//받아온 데이터를 담아 mutation을 일으킨다.
+                // alert(res);
+                // alert(res.data);
+                console.log(res);
+                console.log(res.data);
                 commit(REQUEST_BOARD_LIST_TO_SPRING, res.data)
             })
     },
@@ -77,6 +81,7 @@ export default {
     requestProductListToSpring ({ commit }) {
         return axios.get('http://localhost:7777/product/list')
             .then((res) => {
+              
                 commit(REQUEST_PRODUCT_LIST_TO_SPRING, res.data)
             })
     },
