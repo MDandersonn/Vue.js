@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+   
+    <div id="app">
+        <!-- 자주바꾸기원할때는 v-show(초기 렌더링비용이 높음)
+        v-if는 토글비용이높음 -->
+        <div v-show="show">Yes</div>
+        <button @click="toggle">toggle</button>
+    </div>
+    
+    <script>
+        new Vue({//뷰 인스턴스생성
+            el: '#app',
+            data:{
+                show:false,
+            },
+            methods: {
+                toggle(){
+                    this.show=!this.show
+                },
+            }
+            
+        })
+    //   const { createApp } = Vue
+    
+    //   createApp({
+    //     data() {
+    //       return {
+    //         message: 'Hello Vue!'
+    //       }
+    //     }
+    //   }).mount('#app')
+    </script>
+    </body>
+    </html>

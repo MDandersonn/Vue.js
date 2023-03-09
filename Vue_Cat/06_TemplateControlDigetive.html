@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js App</title>
+    <!-- <link href="main.css" rel="stylesheet"> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app" v-cloak>
+        v-pre:  <a v-bind:href="url" v-pre>
+                    {{message}}
+                    </a><br>
+
+        v-once:  <a v-bind:href="url" v-once>
+                        {{message}}
+                </a>
+        <br>
+        v-text:   <span v-text="message"></span><br>
+        v-html:   <span v-html="message"></span>
+    </div>
+    
+    <script>
+        var app= new Vue({
+            el: '#app',//마운트할 요소
+            data: {//애플리케이션에서 사용할 데이터
+                list:[
+              ],
+              message:"<strong>메시지</strong>",
+              url:"https://www.naver.com"
+            },
+            methods:{
+                handleClick(){
+                    var count= this.$refs.count
+                    console.log(count)
+                    if(count){
+                        count.innerText= parseInt(count.innerText,10)+1
+                    }
+                }
+
+            },
+            computed:{
+                // 산출속성(함수로인해 산출되는 데이터)
+                computedMessage:function(){
+                    return this.message
+                }
+            },
+            created: function(){
+
+            },
+            mounted: function(){
+                    console.log(this.$el)//root요소에 접근
+                    console.log(this.$refs.r1)//특정요소에 접근
+            }
+            
+            
+        })
+        
+    </script>
+    <!-- <script src="main.js"></script> -->
+</body>
+</html>

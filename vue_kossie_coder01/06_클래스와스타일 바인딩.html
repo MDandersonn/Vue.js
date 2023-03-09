@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .red{
+            color:red;
+        }
+        .bold{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+   
+    <div id="app">
+        
+        <button @click="changeColor">click</button>
+        <div :class="{red : isRed , bold:isBold}"> Hello</div>
+        <div :style="{color:col , fontSize:size}">ㅎㅇ</div>
+    </div>
+    
+    <script>
+        new Vue({//뷰 인스턴스생성
+            el: '#app',
+            data:{
+                isRed:false,
+                isBold:false,
+                col:'blue',
+                size:'30px'
+            },
+            methods: {
+                changeColor(){
+                    this.isRed=!this.isRed;  
+                    this.isBold=!this.isBold;  
+                }
+       
+            },
+        
+        })
+    //   const { createApp } = Vue
+    
+    //   createApp({
+    //     data() {
+    //       return {
+    //         message: 'Hello Vue!'
+    //       }
+    //     }
+    //   }).mount('#app')
+    </script>
+    </body>
+    </html>

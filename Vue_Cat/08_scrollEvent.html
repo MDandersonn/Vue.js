@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js App</title>
+    <!-- <link href="main.css" rel="stylesheet"> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header v-bind:class="{compact:scrollY >200}">
+            200px 이상 스크롤했으면, .compact 클래스 추가하기
+        </header>
+    
+    </div>
+    
+    <script>
+        var app= new Vue({
+            el: '#app',//마운트할 요소
+            data: {//애플리케이션에서 사용할 데이터
+                scrollY:0,
+                timer:null
+            },
+            methods:{
+                //200ms간격으로 스크롤데이터를 변경하는 예
+                handleScroll: function(){
+                    if( this.timer===null){
+                        this.timer=setTimeout(function(){
+                            this.sccrollY=window.scrollY
+                            clearTimeout(this.timer)
+                            this.timer=null
+                        }.bind(this),200)
+                    }
+                }
+            },
+            computed:{
+                // 산출속성(함수로인해 산출되는 데이터)
+                computedMessage:function(){
+                    return this.message
+                }
+            },
+            created: function(){
+                // 라이프사이클훅
+                window.addEventListener('scroll',this.handleScroll)
+            }
+            
+            
+        })
+        
+    </script>
+    <!-- <script src="main.js"></script> -->
+</body>
+</html>

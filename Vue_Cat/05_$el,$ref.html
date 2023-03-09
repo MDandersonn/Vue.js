@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js App</title>
+    <!-- <link href="main.css" rel="stylesheet"> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p ref="r1">Hi</p>
+        <button @click="handleClick">Count up</button>
+        <button @click="show=!show">표시/비표시</button>
+        <span ref="count" v-if="show">0</span>
+    </div>
+    
+    <script>
+        var app= new Vue({
+            el: '#app',//마운트할 요소
+            data: {//애플리케이션에서 사용할 데이터
+                list:[
+              ],
+                show:true
+            },
+            methods:{
+                handleClick(){
+                    var count= this.$refs.count
+                    console.log(count)
+                    if(count){
+                        count.innerText= parseInt(count.innerText,10)+1
+                    }
+                }
+
+            },
+            computed:{
+                // 산출속성(함수로인해 산출되는 데이터)
+                computedMessage:function(){
+                    return this.message
+                }
+            },
+            created: function(){
+
+            },
+            mounted: function(){
+                    console.log(this.$el)//root요소에 접근
+                    console.log(this.$refs.r1)//특정요소에 접근
+            }
+            
+            
+        })
+        
+    </script>
+    <!-- <script src="main.js"></script> -->
+</body>
+</html>

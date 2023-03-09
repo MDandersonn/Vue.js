@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+   
+    <div id="app">
+        {{message}}<br>
+        <button @click="changeMessage">click</button>
+        {{updated}}
+    </div>
+    
+    <script>
+        new Vue({//뷰 인스턴스생성
+            el: '#app',
+            data:{
+                message:'안녕하세요',
+                updated:'아니오'
+            },
+            methods: {
+                changeMessage(){
+                    this.message="코지코더"  
+                }
+       
+            },
+            watch:{
+                // data에서  값이변하는지 감사해서 변하면 가져온다 (새값,전값)
+                message(newVal,oldVal){
+                    console.log(newVal,oldVal);
+                    this.updated="네";
+                }
+            }
+        })
+    //   const { createApp } = Vue
+    
+    //   createApp({
+    //     data() {
+    //       return {
+    //         message: 'Hello Vue!'
+    //       }
+    //     }
+    //   }).mount('#app')
+    </script>
+    </body>
+    </html>

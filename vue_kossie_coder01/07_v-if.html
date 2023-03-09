@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+   
+    <div id="app">
+        <template v-if="show">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </template>
+        <div v-else>No</div>
+        <!-- <div v-if="show">Yes</div> -->
+        <button @click="toggle">click</button><br><br>
+        <hr>
+
+
+        <template v-if="number===1">
+            <div>1</div>
+            <div>1</div>
+        </template>
+        <div v-else-if ="number===2">2</div>
+        <div v-else>No</div>
+
+        <button @click="toggle2">click</button>{{number}}<br><br>
+    </div>
+    
+    <script>
+        new Vue({//뷰 인스턴스생성
+            el: '#app',
+            data:{
+                show:false,
+                number:1
+               
+                
+    
+            },
+            methods: {
+                toggle(){
+                    this.show=!this.show
+                },
+                toggle2(){
+                    this.number++;
+                    console.log(this.number)
+                }
+       
+            }
+            
+        })
+    //   const { createApp } = Vue
+    
+    //   createApp({
+    //     data() {
+    //       return {
+    //         message: 'Hello Vue!'
+    //       }
+    //     }
+    //   }).mount('#app')
+    </script>
+    </body>
+    </html>
