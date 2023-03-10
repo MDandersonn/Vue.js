@@ -43,9 +43,9 @@ export default {
     },
     methods: {
         onSubmit () {
-            console.log(this)
+            // console.log(this)
             const { title, writer, content } = this
-            console.log({ title, writer, content })
+            // console.log({ title, writer, content })
             this.$emit('submit', { title, writer, content })
             // this.$emit('submit', { 
             //   title:this.title, 

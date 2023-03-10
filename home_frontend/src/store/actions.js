@@ -8,16 +8,24 @@ import {
 import axios from 'axios'
 
 export default {
-    requestCreateBoardToSpring ({}, payload) {
-        console.log("payload: ",payload)
+    requestCreateBoardToSpring ({commit}, payload) {  //{ title, writer, content }
+        // console.log("payload: ",payload)
         const { title, content, writer } = payload
-        console.log("title:",title)
-        console.log("content:",content)
-        console.log("writer:",writer)
+        // console.log("title:",title)
+        // console.log("content:",content)
+        // console.log("writer:",writer)
         return axios.post('http://localhost:7777/board/register',
             { title, content, writer })
-            .then(() => {
+            .then((res) => {
                 alert('게시물 등록 성공!')
+                console.log('actions의 res: ',res)
+                console.log('actions의 res.data: ',res.data)
+                console.log('actions의 res.data.boardId: ',res.data.boardId)
+                console.log('actions의 this: ',this)//뷰컴퍼넌트의 this랑은 다르다.
+                //반환값을 받아서  mutation에 전달한다.
+                //{commit}을 꼭적자 ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ
+                commit(REQUEST_BOARD_TO_SPRING, res.data)
+
             })
             .catch(() => {
                 alert('문제 발생!')

@@ -43,7 +43,7 @@ export default {
     },
     
     created () {
-        console.log('boardId: ' + this.boardId)
+        console.log('보드리드페이지의 boardId: ' + this.boardId)
         this.requestBoardToSpring(this.boardId)
     }
 }

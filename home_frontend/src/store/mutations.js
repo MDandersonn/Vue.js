@@ -16,7 +16,9 @@ export default {
     //     state.boards = passingData//state의 boards리스트를 넘겨온 데이터로 받는다.
     // }
     [REQUEST_BOARD_TO_SPRING] (state, passingData) {
+        console.log("1mutation의state.board: ", state.board)
         state.board = passingData//state에 전달 -> board객체 갱신오나료
+        console.log("2mutation의state.board: ", state.board)
     },
 
     ////////////상품관리
