@@ -24,7 +24,13 @@ export default {
                 console.log('actions의 this: ',this)//뷰컴퍼넌트의 this랑은 다르다.
                 //반환값을 받아서  mutation에 전달한다.
                 //{commit}을 꼭적자 ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ
-                commit(REQUEST_BOARD_TO_SPRING, res.data)
+                
+                //방법1
+                // commit(REQUEST_BOARD_TO_SPRING, res.data)
+                //방법2
+                alert('게시물 등록 성공: ' + JSON.stringify(res.data))
+                return res
+
 
             })
             .catch(() => {
