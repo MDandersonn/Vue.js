@@ -24,22 +24,31 @@ export default {
             //호출을 해준것이다.
         ]),
         async onSubmit (payload) {//작성정보 1들어옴  //{ title, writer, content }
-            await console.log("action처리 전 this: ",this)//뷰객체
-            await console.log("action처리 전 this.board", this.board)//뷰
-            await console.log("action처리 전 this.board.boadId", this.board.boardId)//뷰
-            await this.requestCreateBoardToSpring(payload)//게시물 등록 성공
-            await console.log("this.$store: ", this.$store)
-            await console.log("this.$store.state: ", this.$store.state)
-            await console.log("this.$store.state.board: ", this.$store.state.board)
-            await console.log("this.$store.state.board.boardId: ", this.$store.state.board.boardId)
-            await console.log("action처리후 this ", this)//뷰객체
-            await console.log("action처리후 this.board", this.board)//뷰
-            await console.log("action처리후 this.board.boardId", this.board.boardId)//뷰
+            // await console.log("action처리 전 this: ",this)//뷰객체
+            // await console.log("action처리 전 this.board", this.board)//뷰
+            // await console.log("action처리 전 this.board.boadId", this.board.boardId)//뷰
+            // // await this.requestCreateBoardToSpring(payload)//게시물 등록 성공
+            // await console.log("this.$store: ", this.$store)
+            // await console.log("this.$store.state: ", this.$store.state)
+            // await console.log("this.$store.state.board: ", this.$store.state.board)
+            // await console.log("this.$store.state.board.boardId: ", this.$store.state.board.boardId)
+            // await console.log("action처리후 this ", this)//뷰객체
+            // await console.log("action처리후 this.board", this.board)//뷰
+            // await console.log("action처리후 this.board.boardId", this.board.boardId)//뷰
+            const board = await this.requestCreateBoardToSpring(payload)
+            console.log('board: ' +board)
+            console.log('board.data: ' +board.data)
+            console.log('JSON.stringify(board.data): ' + JSON.stringify(board.data))
             await this.$router.push({
                 // name: 'JpaBoardListPage'
                 name: 'JpaBoardReadPage',
                 // params: { boardId: this.$store.state.board.boardId.toString()}
-                params: { boardId: this.board.boardId.toString()}
+                
+                //방법1
+                // params: { boardId: this.board.boardId.toString()}
+                //방법2
+                params: { boardId: board.data.boardId.toString() }
+                
             })
         }
     }
