@@ -23,9 +23,9 @@ export default {
     },
     methods: {
         handleFileUpload () {
-            console.log(this.$refs)
-            console.log(this.$refs.files)//input태그출력
-            console.log(this.$refs.files.files)//FileList객체
+            console.log('this.$refs: ',this.$refs)
+            console.log('this.$refs.files: ', this.$refs.files)//input태그출력
+            console.log('this.$refs.files.files: ',this.$refs.files.files)//FileList(리스트)
             this.files1 = this.$refs.files.files 
             //올린 파일정보 data() file1에 담음
         },
@@ -37,7 +37,7 @@ export default {
             }
             // 사진
             for (let idx = 0; idx < this.files1.length; idx++) {
-                formData.append('fileList', this.files1[idx])
+                formData.append('imageFileList', this.files1[idx])
             }
             // 글자
             formData.append(

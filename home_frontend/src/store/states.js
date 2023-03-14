@@ -6,4 +6,5 @@ export default {
     //상품관리
     products: [],
     product: {},
+    productImages: [],
 }
