@@ -19,7 +19,7 @@
         </td>
         <td align="left">
           <router-link :to="{ name: 'JpaProductReadPage',
-                            params: { productId: product.productId.toString() }}">
+                            params: { productId: product.productId.toString() } }">
             {{ product.productName }}
           </router-link>
         </td>
