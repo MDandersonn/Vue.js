@@ -77,6 +77,12 @@ export default {
             )
             console.log('formData :' + formData)
             console.log('JSON.stringify(formData) :' + JSON.stringify(formData))
+            for (var key of formData.keys()) {
+              console.log('key:' ,key);
+            }
+            for (var value of formData.values()) {
+              console.log('value: ', value);
+            }
 
             this.$emit('submit', formData)//사진정보랑 글자입력정보랑 같이 보내줌.
         },
