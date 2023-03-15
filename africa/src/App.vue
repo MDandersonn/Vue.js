@@ -2,13 +2,13 @@
 <div>
   <Header/>
   <Home/>
-  <Footer/>
+  <Footer2/>
 
 </div>
 </template>
 
 <script>
-import Footer from '../../home_frontend/src/views/lecture/layoutForm/Footer.vue'
+import Footer2 from './components/Footer2.vue'
 import Header from './components/Header.vue'
 import Home from './pages/Home.vue'
 
@@ -17,7 +17,7 @@ export default {
   name: 'App',
   components: {
     Header,
-    Footer,
+    Footer2,
     Home
 
   }
