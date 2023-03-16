@@ -45,7 +45,14 @@ export default {
             await this.$router.push({ name: 'JpaProductListPage' })
         }
     },
+    beforeMount(){
+      //  alert("before mount!")
+    },
+    mounted(){
+      // alert("mount!")
+    },
     async created () {
+      // alert("created!")
         console.log('productId: ' + this.productId)
         await this.requestProductToSpring(this.productId)
         await this.requestProductImageToSpring(this.productId)

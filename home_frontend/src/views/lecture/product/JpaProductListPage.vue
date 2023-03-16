@@ -21,7 +21,15 @@ export default {
       'products'
     ]),
   },
+  created(){
+    // alert("created!")
+    
+  },
+   beforeMount(){
+      //  alert("before mount!")
+    },
   mounted () {
+    // alert("mount!")
     this.requestProductListToSpring()
   },
   methods: {
