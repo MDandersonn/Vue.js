@@ -23,6 +23,23 @@
         <span>또 테스트</span>
         <v-icon right>mdi-history</v-icon>
       </v-btn>
+      
+       <v-btn v-if="isAuthenticated == true" text color="grey" v-on:click="resign">
+        <span>회원 탈퇴</span>
+        <v-icon right>mdi-login</v-icon>
+      </v-btn>
+      <v-btn text color="grey" onclick="location.href='http://localhost:8081/sign-up'">
+        <span>Sign Up</span>
+        <v-icon right>mdi-account-plus-outline</v-icon>
+      </v-btn>
+      <v-btn v-if="isAuthenticated == false" text color="grey" onclick="location.href='http://localhost:8081/sign-in'">
+        <span>Sign In</span>
+        <v-icon right>mdi-login</v-icon>
+      </v-btn>
+      <v-btn v-else text color="grey" v-on:click="logout">
+        <span>Sign Out</span>
+        <v-icon right>mdi-exit-to-app</v-icon>
+      </v-btn>
     </v-app-bar>
 
 <!-- 옆창 네비게이션 -->
@@ -58,6 +75,8 @@
 </template>
 
 <script>
+import {mapState} from "vuex";
+import axios from "axios";
 export default {
   name: "NavigationMenuPage",
   data() {
@@ -75,12 +94,52 @@ export default {
       ],
     };
   },
+  computed: {
+    ...mapState(["isAuthenticated"]),
+  },
+  mounted() {
+    //localStorage를 사용하면, 브라우저에 key-value 값을 Storage에 저장할 수 있습니다.
+    //저장한 데이터는 세션간에 공유됩니다.
+    //즉, 세션이 바뀌어도 저장한 데이터가 유지됩니다.
+    if (localStorage.getItem("userInfo")) {
+      this.$store.state.isAuthenticated = true;
+    } else {
+      this.$store.state.isAuthenticated = false;
+    }
+  },
   methods: {
     clickToggle() {
       this.isTrue = !this.isTrue;
     },
-  },
-};
+     logout () {
+      console.log('localStorage.getItem("userInfo"): ' + localStorage.getItem("userInfo"))
+        let token = localStorage.getItem("userInfo")
+      const length = token.length
+      console.log('token: ' + token + ', length: ' + length)
+      token = token.substr(1, length - 2)//양쪽에 있는 "" 제거 substr("시작 위치", "길이")
+      console.log('token: ' + token + ', length: ' + token.length)
+      axios.post("http://localhost:7777/member/logout", token)//토큰을 보냄
+          .then(() => {
+            alert("로그아웃 완료");
+            localStorage.removeItem("userInfo");//로컬스토리지에서 제거
+            this.$store.state.isAuthenticated = false;
+          })
+      },
+    resign () {//백엔드엔 구현 아직 안했음.
+      let token = localStorage.getItem("userInfo")
+      const length = token.length
+      console.log('token: ' + token + ', length: ' + length)
+      token = token.substr(1, length - 2)
+      console.log('token: ' + token)
+      axios.post("http://localhost:7777/member/resign", token)
+          .then(() => {
+            alert("회원탈퇴 완료");
+            localStorage.removeItem("userInfo");
+            this.$store.state.isAuthenticated = false;
+          })
+    },
+  }
+}
 </script>
 
 <style>
