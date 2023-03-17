@@ -126,12 +126,13 @@ export default {
     };
   },
   methods: {
-    findAccountEmail() {
+    findAccountEmail() {//PW찾기 시스템 
       const { email } = this;
       axios
           .post("http://localhost:7777/member/emailMatch", { email })
           .then((res) => {
-            if (res.data) {
+            if (res.data) {//res.data가 true면 //해당아이디가 존재할경우
+              console.log("res.data: ", res.data);
               alert("인증이 완료되었습니다.");
               this.isPass = true;
             } else {
