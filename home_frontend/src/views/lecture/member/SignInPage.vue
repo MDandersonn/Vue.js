@@ -46,6 +46,7 @@ export default {
               }
             })
             .catch((res) => {
+                console.log("로그인실패");
               alert(res.response.data.message);
             });
       } else {
