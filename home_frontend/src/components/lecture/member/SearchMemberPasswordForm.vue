@@ -10,6 +10,7 @@
                 class="mx-auto mb-6"
             ></v-img>
           </router-link>
+          <!-- 이메일인증이 완료되지 않은 경우 -->
           <v-card width="460" v-if="!isPass">
             <v-card-text class="text-center px-12 py-16">
 
@@ -41,6 +42,7 @@
             </v-card-text>
           </v-card>
 
+<!-- 이메일인증이 완료된경우 -->
           <v-card width="460" v-if="isPass">
             <v-card-text class="text-center px-12 py-16">
 

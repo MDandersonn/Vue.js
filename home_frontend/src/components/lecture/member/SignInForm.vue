@@ -4,6 +4,7 @@
       <v-row justify="center">
         <v-col cols="auto" style="padding-bottom: 90px">
           <router-link to="/">
+          <!-- 그림찍으면 홈으로 이동 -->
             <v-img
                 :src="require('@/assets/logo.png')"
                 width="120"
@@ -99,7 +100,7 @@ export default {
   methods: {
     onSubmit() {
       const { email, password } = this;
-      this.$emit("submit", { email, password });
+      this.$emit("submit", { email, password });//이메일과 패스워드를 부모로 보냄
     },
   },
 };

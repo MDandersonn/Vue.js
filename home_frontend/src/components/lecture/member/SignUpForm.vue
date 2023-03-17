@@ -16,8 +16,7 @@
                               :rules="email_rule" :disabled="false" required/>
                 <v-btn text large outlined style="font-size: 13px"
                        class="mt-3 ml-5" color="teal lighten-1"
-                       @click="checkDuplicateEmail"
-                       :disabled="!emailPass">
+                       @click="checkDuplicateEmail">
                   이메일 <br/>중복 확인
                 </v-btn>
               </div>
@@ -30,6 +29,7 @@
               <div class="d-flex">
                 <v-text-field v-model="password_confirm" label="비밀번호 확인" type="password"
                               :rules="password_confirm_rule" :disabled="false" required/>
+                              <!-- :diabled: 버튼활성화 비활성화 -->
               </div>
 
               <div class="d-flex">
@@ -56,7 +56,8 @@
               </div>
 
               <v-btn type="submit" block x-large rounded
-                     class="mt-6" color="purple lighten-1" :disabled="(emailPass & streetPass) == false">
+                         class="mt-6" color="purple lighten-1" 
+                     :disabled="(emailPass && streetPass) == false" >
                 가입하기
               </v-btn>
 
@@ -81,8 +82,8 @@ export default {
       street: '',
       addressDetail: '',
       zipcode: '',
-      emailPass: false,
-      streetPass: false,
+      emailPass: false,//아디중복체크후 사용가능한 이메일인지 여부
+      streetPass: false,//주소입력여부 
       email_rule: [
         v => !!v || '이메일을 입력해주세요.',
         v => {
@@ -104,7 +105,7 @@ export default {
   },
   methods: {
     onSubmit () {
-      if (this.$refs.form.validate()) {
+      if (this.emailPass && this.streetPass) {
         const { email, password, city, street, addressDetail, zipcode } = this
         this.$emit("submit", { email, password, city, street, addressDetail, zipcode })
       } else {
@@ -115,14 +116,14 @@ export default {
       const emailValid = this.email.match(
           /^(([^<>()[\]\\.,;:\s@]+(\.[^<>()[\]\\.,;:\s@]+)*)|(.+))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       );
-      if (emailValid) {
-        this.emailPass = true
-      }
+  
     },
     checkDuplicateEmail () {
       const emailValid = this.email.match(
           /^(([^<>()[\]\\.,;:\s@]+(\.[^<>()[\]\\.,;:\s@]+)*)|(.+))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       );
+      this.emailPass = false
+
       if (emailValid) {
         const {email} = this
         axios.post(`http://localhost:7777/member/check-email/${email}`)

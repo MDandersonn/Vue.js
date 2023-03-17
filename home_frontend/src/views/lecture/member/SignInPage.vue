@@ -21,23 +21,24 @@ export default {
     };
   },
   mounted() {
-    if (this.$store.state.isAuthenticated != false) {
-      this.isLogin = true;
-    } else {
+    if (this.$store.state.isAuthenticated != false) {//로그인상태이면
+      this.isLogin = true;//isLogin은 디버깅용으로 작성해놓은거다.
+    } else {//로그인상태가 아니면 
       this.isLogin = false;
     }
   },
   methods: {
-    onSubmit(payload) {
-      if (!this.isLogin) {
+    onSubmit(payload) {//{ email, password }
+      if (!this.isLogin) {//로그인상태가 아니면
         const { email, password } = payload;
         axios
             .post("http://localhost:7777/member/sign-in", { email, password })
             .then((res) => {
-              if (res.data) {
+              if (res.data) {//토큰이오면
                 alert("로그인 성공!");
+                console.log("res.data: ", res.data)
                 this.$store.state.isAuthenticated = true;
-                this.$cookies.set("user", res.data, 3600);
+                this.$cookies.set("user", res.data, 3600);//30분
                 localStorage.setItem("userInfo", JSON.stringify(res.data));
                 this.isLogin = true;
                 this.$router.push("/");
@@ -49,7 +50,7 @@ export default {
                 console.log("로그인실패");
               alert(res.response.data.message);
             });
-      } else {
+      } else { //로그인상태이면
         alert("이미 로그인이 되어 있습니다!");
       }
     },

@@ -98,6 +98,9 @@ export default {
     ...mapState(["isAuthenticated"]),
   },
   mounted() {
+    //localStorage를 사용하면, 브라우저에 key-value 값을 Storage에 저장할 수 있습니다.
+    //저장한 데이터는 세션간에 공유됩니다.
+    //즉, 세션이 바뀌어도 저장한 데이터가 유지됩니다.
     if (localStorage.getItem("userInfo")) {
       this.$store.state.isAuthenticated = true;
     } else {
@@ -109,20 +112,20 @@ export default {
       this.isTrue = !this.isTrue;
     },
      logout () {
-      console.log('getItem: ' + localStorage.getItem("userInfo"))
+      console.log('localStorage.getItem("userInfo"): ' + localStorage.getItem("userInfo"))
         let token = localStorage.getItem("userInfo")
       const length = token.length
       console.log('token: ' + token + ', length: ' + length)
-      token = token.substr(1, length - 2)
+      token = token.substr(1, length - 2)//양쪽에 있는 "" 제거 substr("시작 위치", "길이")
       console.log('token: ' + token + ', length: ' + token.length)
-      axios.post("http://localhost:7777/member/logout", token)
+      axios.post("http://localhost:7777/member/logout", token)//토큰을 보냄
           .then(() => {
             alert("로그아웃 완료");
-            localStorage.removeItem("userInfo");
+            localStorage.removeItem("userInfo");//로컬스토리지에서 제거
             this.$store.state.isAuthenticated = false;
           })
       },
-    resign () {
+    resign () {//백엔드엔 구현 아직 안했음.
       let token = localStorage.getItem("userInfo")
       const length = token.length
       console.log('token: ' + token + ', length: ' + length)
