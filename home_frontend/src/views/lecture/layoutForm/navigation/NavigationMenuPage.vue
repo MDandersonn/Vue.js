@@ -28,11 +28,11 @@
         <span>회원 탈퇴</span>
         <v-icon right>mdi-login</v-icon>
       </v-btn>
-      <v-btn text color="grey" onclick="location.href='http://localhost:8080/sign-up'">
+      <v-btn text color="grey" onclick="location.href='http://localhost:8081/sign-up'">
         <span>Sign Up</span>
         <v-icon right>mdi-account-plus-outline</v-icon>
       </v-btn>
-      <v-btn v-if="isAuthenticated == false" text color="grey" onclick="location.href='http://localhost:8080/sign-in'">
+      <v-btn v-if="isAuthenticated == false" text color="grey" onclick="location.href='http://localhost:8081/sign-in'">
         <span>Sign In</span>
         <v-icon right>mdi-login</v-icon>
       </v-btn>
