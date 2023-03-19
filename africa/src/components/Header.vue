@@ -29,7 +29,7 @@
         <strong>Gallery</strong>
       </router-link>
       <!-- 장바구니모양 추가. -->
-      <router-link to="/cart" class="cart btn">
+      <router-link to="/cart" class="cart btn" v-if="$store.state.account.id">
         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
       </router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,13 +43,21 @@
 <script>
 import store from "@/scripts/store";
 import router from "@/scripts/router";
+import axios from "axios";
 export default {
   name: 'Header',
   setup(){
     const logout = () =>{
-      store.commit('setAccount',0);//0이면 false로 인식하는듯.
-      sessionStorage.removeItem('id');
-      router.push({path:"/"});
+     
+      //쿠키를 클라이언트에서 지울수없는쿠키라서 
+      axios.post("/api/account/logout")
+        .then(() =>{
+           store.commit('setAccount',0);//0이면 false로 인식하는듯.
+           router.push({path:"/"});
+        })
+
+      // sessionStorage.removeItem('id');
+      
     }
     return {logout};
   },
@@ -61,6 +69,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+header ul li a {
+  cursor:pointer;
+
+}
 header .navbar .cart{
   margin-left:auto;
   color:white;
