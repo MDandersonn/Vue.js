@@ -1,7 +1,7 @@
 <template>
 <div>
   <Header/>
-  <Home/>
+  <RouterView/>
   <Footer2/>
 
 </div>
@@ -10,16 +10,41 @@
 <script>
 import Footer2 from './components/Footer2.vue'
 import Header from './components/Header.vue'
-import Home from './pages/Home.vue'
-
+import store from "@/scripts/store";
+import axios from "axios";
+//import router from "@/scripts/router";
+import {watch} from "vue";
+import {useRoute} from "vue-router/dist/vue-router";
 
 export default {
   name: 'App',
   components: {
     Header,
     Footer2,
-    Home
+    // Home
 
+  },
+
+  setup(){
+    const check= ()=>{
+      axios.get("/api/account/check")
+      .then(({data}) =>{
+        console.log(data);
+        store.commit("setAccount",data || 0 ); //data가 있으면 data를 넣고 없으면 0을 넣으라는 의미
+
+      })
+    };
+    const route= useRoute();//브라우저의  url관련된 정보를 가져옴
+      //경로가바뀔때마다 감시해주는 watch를 넣는다.
+    watch(route, ()=>{
+      check();
+    })
+
+      //sessionStrorage를 쓰면 f12로 조작가능
+    // const id= sessionStorage.getItem("id");
+    // if (id){
+    //   store.commit("setAccount",id);
+    // }
   }
 }
 </script>
