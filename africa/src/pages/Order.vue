@@ -88,8 +88,20 @@ export default {
 
 
     const submit = () => {
-      const args = JSON.parse(JSON.stringify(state.form));
+        console.log("state.form:",state.form)
+        //JSON.stringify :JavaScript 값이나 객체를 JSON 문자열로 변환합니다
+        console.log("JSON.stringify(state.form):",JSON.stringify(state.form))
+
+        //JSON.parse() 메서드는 JSON 문자열의 구문을 분석하고, 그 결과에서 JavaScript 값이나 객체를 생성합니다
+        console.log("JSON.parse(JSON.stringify(state.form)):",JSON.parse(JSON.stringify(state.form)))
+        
+      const args = JSON.parse(JSON.stringify(state.form)); //참조값의 연결고리를 끊음 ( 안해도되는과정임) state.form의 items값이 '' 로나와서하는거
+      console.log( "state.items:", state.items)
+      console.log(" JSON.stringify(state.items):" , JSON.stringify(state.items))
+
       args.items = JSON.stringify(state.items);
+      console.log('args.items : ',args.items)
+      console.log('args : ',args)
       axios.post("/api/orders", args).then(() => {
         alert('주문 완료하였습니다.');
         router.push({path: "/orders"})
@@ -104,7 +116,7 @@ export default {
       }
       return result;
     })
-    
+
     load();
     return {state, lib, computedPrice, submit}
   }
