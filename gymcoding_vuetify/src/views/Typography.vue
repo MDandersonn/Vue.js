@@ -3,9 +3,15 @@
     <v-card>
       <v-card-title> Typography </v-card-title>
       <v-contain class="grey lighten-3">
+      <!-- pa :padding all 3씩 추가 -->
         <v-card class="pa-3" outlined>
-          <p class="text-h1">Heading1</p>
-          <p class="text-h2">Heading2</p>
+            <!-- d-none 뜻:  display:none; -->   <!-- sm이상일때는 block -->
+          <p class="text-h1 d-none d-sm-block" >Heading1</p>
+
+          
+          <p class="text-h2 ">Heading2</p>
+
+
           <!-- sm이상일때는 subtitle1으로변경 -->
           <p class="text-h3 text-sm-subtitle-1">Heading3</p>
 
@@ -42,7 +48,7 @@
                 <!-- error:레드 -->
                 Right aligned text on all viewport sizes.
                 </p>
-    <!-- 글자색 변경 -->
+            <!-- 글자색 변경 -->
                 <p class="text-sm-left primary--text">
                 Left aligned text on viewports sized SM (small) or wider.
                 </p>
@@ -55,7 +61,6 @@
                 <p class="text-xl-left">
                 Left aligned text on viewports sized XL (extra-large) or wider.
                 </p>
-          
           </v-container>
 
 </template>
