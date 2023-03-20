@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../Users/1215k/git/KHGPM-Frontend/LeeSanghoon/frontend"
+		},
+		{
+			"path": "../../Users/1215k/git/vuetify-admin-template"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Vue.js"
+	}
+}
