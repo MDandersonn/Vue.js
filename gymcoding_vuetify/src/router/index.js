@@ -34,6 +34,38 @@ const routes = [
     name: 'Typography',
     component: Typography
   },
+  {
+    path: '/buttons',
+    name: 'Buttons',
+    component: () => import(
+      /* webpackChunkName: "views-buttons" */
+      '@/views/Buttons'
+    )
+  },
+  {
+    path: '/icons',
+    name: 'Icons',
+    component: () => import(
+      /* webpackChunkName: "views-icons" */
+      '@/views/Icons'
+    )
+  },
+  {
+    path: '/tables',
+    name: 'Tables',
+    component: () => import(
+      /* webpackChunkName: "views-icons" */
+      '@/views/Tables'
+    )
+  },
+  {
+    path: '/forms',
+    name: 'Forms',
+    component: () => import(
+      /* webpackChunkName: "views-icons" */
+      '@/views/Forms'
+    )
+  }
 
 
 ]
