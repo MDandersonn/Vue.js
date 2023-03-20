@@ -34,7 +34,8 @@
         <router-link to="/">Dashboard</router-link>|
         <router-link to="/grid-system">GridSystem</router-link>|
         <router-link to="/grid-list-page">GridListPage</router-link>|
-        <router-link to="/breakpoints">Breakpoints</router-link>
+        <router-link to="/breakpoints">Breakpoints</router-link>|
+        <router-link to="/typography">Typography</router-link>
       </div>
        <v-container class="" fluid>
           <router-view />
