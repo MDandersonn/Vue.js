@@ -4,7 +4,7 @@ module.exports = {
 		es2021: true
 	},
 	extends: [
-		'plugin:vue/essential',
+		'plugin:vue/recommended',//essential
 		'standard'
 	],
 	parserOptions: {
@@ -12,7 +12,7 @@ module.exports = {
 		sourceType: 'module'
 	},
 	plugins: [
-		'vue'
+		'vuetify'// 'vue'
 	],
 	rules: {
 		'vue/multi-word-component-names': ['error', {
