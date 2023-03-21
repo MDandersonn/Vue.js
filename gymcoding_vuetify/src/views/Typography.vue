@@ -2,7 +2,7 @@
   <v-container>
     <v-card>
       <v-card-title> Typography </v-card-title>
-      <v-contain class="grey lighten-3">
+      <v-container class="grey lighten-3">
       <!-- pa :padding all 3씩 추가 -->
         <v-card class="pa-3" outlined>
             <!-- d-none 뜻:  display:none; -->   <!-- sm이상일때는 block -->
@@ -32,7 +32,7 @@
               velit. Pellentesque ut neque.
             </p>
           </v-card>
-          </v-contain></v-card>
+          </v-container></v-card>
           <!-- 배경색변경 -->
               <p class="text-left primary">
               <!-- primary:배경 파랑색 -->
