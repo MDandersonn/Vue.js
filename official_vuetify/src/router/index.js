@@ -7,6 +7,16 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/ui2',
+    name: 'ui2',
+    component: () => import(/* webpackChunkName: "about" */ '../views/07_ui2View.vue')
+  },
+  {
+    path: '/group',
+    name: 'group',
+    component: () => import(/* webpackChunkName: "about" */ '../views/06_groupView.vue')
+  },
+  {
     path: '/form',
     name: 'form',
     component: () => import(/* webpackChunkName: "about" */ '../views/04_formView.vue')

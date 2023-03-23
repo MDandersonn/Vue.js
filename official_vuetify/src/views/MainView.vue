@@ -5,6 +5,8 @@
     <router-link to="/application">application</router-link> |
     <router-link to="/appbars">appbars</router-link> |
     <router-link to="/form">form</router-link> |
+    <router-link to="/group">group</router-link> |
+    <router-link to="/ui2">ui2</router-link> |
 
     
 </div>
