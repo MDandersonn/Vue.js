@@ -81,7 +81,7 @@ export default {
 
     ///////////////////////////상품관리
 
-    requestCreateProductToSpring ({}, payload) {//formData가 들어오고
+    requestCreateProductToSpring ({}, payload) {//payload : formData가 들어오고
         console.log('payload: ' + payload)
         console.log('JSON.stringify(payload): ' + JSON.stringify(payload))
         const { productName, content, writer, price } = payload
